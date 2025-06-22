@@ -1,0 +1,823 @@
+/* Fuentes y variables de colores femeninos */
+:root {
+    --primary-pink: #ff69b4;
+    --soft-pink: #ffb6c1;
+    --light-pink: #ffe4e1;
+    --lavender: #e6e6fa;
+    --mint: #f0fff0;
+    --cream: #fffef7;
+    --rose-gold: #e8b4b8;
+    --purple-light: #dda0dd;
+    --peach: #ffcccb;
+    --powder-blue: #b6e5f7;
+    
+    --text-dark: #4a4a4a;
+    --text-muted: #8e8e8e;
+    
+    --success-feminine: #8B5FBF;
+    --danger-feminine: #f78ca0;
+    --warning-feminine: #ffd93d;
+    --info-feminine: #87ceeb;
+    
+    --shadow-soft: 0 4px 20px rgba(255, 105, 180, 0.1);
+    --shadow-medium: 0 8px 30px rgba(255, 105, 180, 0.15);
+    --shadow-strong: 0 12px 40px rgba(255, 105, 180, 0.2);
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--light-pink) 100%);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+.feminine-bg {
+    background: linear-gradient(135deg, var(--cream) 0%, var(--light-pink) 50%, var(--lavender) 100%);
+    background-attachment: fixed;
+}
+
+/* Navegación femenina */
+.feminine-nav {
+    background: linear-gradient(90deg, var(--soft-pink) 0%, var(--lavender) 100%);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow-soft);
+    border-radius: 0 0 25px 25px;
+    margin-bottom: 1rem;
+}
+
+.feminine-nav .nav-link {
+    color: var(--text-dark);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.feminine-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.feminine-nav .nav-link:hover::before {
+    left: 100%;
+}
+
+.feminine-nav .nav-link.active {
+    background: linear-gradient(45deg, var(--primary-pink), var(--purple-light));
+    color: white;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.feminine-nav .nav-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Pestañas */
+.tab-content {
+    display: none;
+    animation: feminineSlideIn 0.5s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes feminineSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Headers femeninos */
+.feminine-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.feminine-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, var(--primary-pink), var(--purple-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.1);
+}
+
+.feminine-subtitle {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.feminine-balance {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--success-feminine), var(--info-feminine));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Tarjetas femeninas */
+.feminine-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 25px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.feminine-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-pink), var(--purple-light), var(--soft-pink));
+}
+
+.feminine-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.feminine-card-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.income-card {
+    background: #ffffff
+}
+
+.expense-card {
+    background: #ffffff; /* fondo blanco */
+}
+
+/* Iconos femeninos */
+.feminine-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    animation: feminineFloat 3s ease-in-out infinite;
+}
+
+.income-icon {
+    background: linear-gradient(45deg, var(--success-feminine), var(--mint));
+    color: white;
+}
+
+.expense-icon {
+    background: linear-gradient(45deg, var(--danger-feminine), var(--peach));
+    color: white;
+}
+
+@keyframes feminineFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Formularios femeninos */
+.feminine-form-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(10px);
+}
+
+.feminine-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.feminine-input, .feminine-select {
+    border: 2px solid var(--light-pink);
+    border-radius: 15px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.feminine-input:focus, .feminine-select:focus {
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.25);
+    background: white;
+}
+
+.feminine-input-group .feminine-input-addon {
+    background: linear-gradient(45deg, var(--soft-pink), var(--lavender));
+    border: 2px solid var(--light-pink);
+    border-right: none;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* Botones femeninos */
+.feminine-btn-primary {
+    background: linear-gradient(45deg, var(--primary-pink), var(--purple-light));
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.feminine-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    background: linear-gradient(45deg, #ff1493, #ba55d3);
+}
+
+.feminine-btn-secondary {
+    background: linear-gradient(45deg, var(--rose-gold), var(--peach));
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.feminine-btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.feminine-btn-success {
+    background: linear-gradient(45deg, var(--success-feminine), var(--mint));
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.feminine-btn-danger {
+    background: linear-gradient(45deg, var(--danger-feminine), var(--peach));
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.feminine-btn-info {
+    background: linear-gradient(45deg, var(--info-feminine), var(--powder-blue));
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.feminine-btn-warning {
+    background: linear-gradient(45deg, var(--warning-feminine), #fff8dc);
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Grupo de botones para tipo de movimiento */
+.feminine-btn-group .btn {
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid var(--light-pink);
+}
+
+.feminine-btn-income {
+    background: rgba(152, 217, 130, 0.1);
+    color: var(--success-feminine);
+}
+
+.feminine-btn-income.active,
+.feminine-btn-income:checked + .feminine-btn-income {
+    background: linear-gradient(45deg, var(--success-feminine), var(--mint));
+    color: white;
+    box-shadow: var(--shadow-soft);
+}
+
+.feminine-btn-expense {
+    background: rgba(247, 140, 160, 0.1);
+    color: var(--danger-feminine);
+}
+
+.feminine-btn-expense.active,
+.feminine-btn-expense:checked + .feminine-btn-expense {
+    background: linear-gradient(45deg, var(--danger-feminine), var(--peach));
+    color: white;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Listas femeninas */
+.feminine-list .list-group-item {
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 0.75rem;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feminine-list .list-group-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary-pink), var(--purple-light));
+}
+
+.feminine-list .list-group-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.feminine-list .list-group-item.ingreso::before {
+    background: linear-gradient(to bottom, var(--success-feminine), var(--mint));
+}
+
+.feminine-list .list-group-item.egreso::before {
+    background: linear-gradient(to bottom, var(--danger-feminine), var(--peach));
+}
+
+/* Chips de categorías femeninos */
+.categoria-chip {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+}
+
+.categoria-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.ingreso-chip {
+    background: linear-gradient(45deg, var(--success-feminine), var(--mint));
+    color: white;
+}
+
+.egreso-chip {
+    background: linear-gradient(45deg, var(--danger-feminine), var(--peach));
+    color: white;
+}
+
+/* Gráficos femeninos */
+.feminine-chart-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    height: 350px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.feminine-chart-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-pink), var(--purple-light), var(--soft-pink));
+}
+
+/* Secciones femeninas */
+.feminine-section {
+    margin-bottom: 2rem;
+}
+
+/* Categorías existentes */
+.feminine-categories-list {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.categoria-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border: none;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.categoria-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+}
+
+.categoria-item.ingreso::before {
+    background: linear-gradient(to bottom, var(--success-feminine), var(--mint));
+}
+
+.categoria-item.egreso::before {
+    background: linear-gradient(to bottom, var(--danger-feminine), var(--peach));
+}
+
+.categoria-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.categoria-nombre {
+    font-weight: 600;
+    color: var(--text-dark);
+    flex-grow: 1;
+}
+
+.categoria-tipo {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin-right: 1rem;
+    font-weight: 500;
+}
+
+.categoria-tipo.ingreso {
+    background: linear-gradient(45deg, var(--success-feminine), var(--mint));
+    color: white;
+}
+
+.categoria-tipo.egreso {
+    background: linear-gradient(45deg, var(--danger-feminine), var(--peach));
+    color: white;
+}
+
+.btn-eliminar-categoria {
+    background: linear-gradient(45deg, var(--danger-feminine), var(--peach));
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-eliminar-categoria:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Modal femenino */
+.feminine-modal .modal-content {
+    border: none;
+    border-radius: 25px;
+    box-shadow: var(--shadow-strong);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.feminine-modal-header {
+    background: linear-gradient(90deg, var(--soft-pink), var(--lavender));
+    border-radius: 25px 25px 0 0;
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+.feminine-modal-footer {
+    border-top: none;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 25px 25px;
+}
+
+.feminine-btn-close {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    opacity: 1;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.feminine-btn-close:hover {
+    background: var(--danger-feminine);
+    transform: scale(1.1);
+}
+
+/* Búsqueda avanzada */
+.feminine-search-results {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 182, 193, 0.1));
+    border-radius: 20px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.feminine-divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-pink), var(--purple-light), var(--soft-pink));
+    border-radius: 1px;
+    margin-bottom: 1rem;
+}
+
+.feminine-badge {
+    background: linear-gradient(45deg, var(--primary-pink), var(--purple-light));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* Montos femeninos */
+.feminine-amount {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.text-success-feminine {
+    color: var(--success-feminine) !important;
+}
+
+.text-danger-feminine {
+    color: var(--danger-feminine) !important;
+}
+
+/* Botones de edición */
+.editar-btn {
+    background: linear-gradient(45deg, var(--info-feminine), var(--powder-blue));
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+    transform: scale(0.9);
+}
+
+.feminine-list .list-group-item:hover .editar-btn,
+.feminine-card:hover .editar-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.editar-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Alertas femeninas */
+.alert {
+    border-radius: 20px;
+    border: none;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(10px);
+}
+
+.alert-success {
+    background: linear-gradient(45deg, rgba(152, 217, 130, 0.9), rgba(240, 255, 240, 0.9));
+    color: var(--success-feminine);
+}
+
+.alert-danger {
+    background: linear-gradient(45deg, rgba(247, 140, 160, 0.9), rgba(255, 228, 225, 0.9));
+    color: var(--danger-feminine);
+}
+
+.alert-warning {
+    background: linear-gradient(45deg, rgba(255, 217, 61, 0.9), rgba(255, 248, 220, 0.9));
+    color: #b8860b;
+}
+
+.alert-info {
+    background: linear-gradient(45deg, rgba(135, 206, 235, 0.9), rgba(182, 229, 247, 0.9));
+    color: var(--info-feminine);
+}
+
+/* Loading spinner femenino */
+.loading-spinner {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 3px solid rgba(255, 105, 180, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-pink);
+    animation: feminineSpinGlow 1s ease-in-out infinite;
+    margin-right: 0.5rem;
+}
+
+@keyframes feminineSpinGlow {
+    to { 
+        transform: rotate(360deg);
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    }
+}
+
+/* Responsive femenino */
+@media (max-width: 992px) {
+    .feminine-chart-container {
+        height: 300px;
+    }
+    
+    .feminine-title {
+        font-size: 2rem;
+    }
+    
+    .feminine-nav {
+        padding: 0.75rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .feminine-nav .nav-link span {
+        display: none;
+    }
+    
+    .feminine-nav .nav-link i {
+        font-size: 1.4rem;
+    }
+    
+    .feminine-chart-container {
+        height: 250px;
+    }
+    
+    .feminine-title {
+        font-size: 1.8rem;
+    }
+    
+    .feminine-form-container {
+        padding: 1.5rem;
+    }
+    
+    .feminine-card .card-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .feminine-nav {
+        border-radius: 0 0 15px 15px;
+        padding: 0.5rem;
+    }
+    
+    .feminine-nav .nav-link {
+        padding: 0.5rem 1rem;
+        margin: 0 0.25rem;
+    }
+    
+    .feminine-title {
+        font-size: 1.5rem;
+    }
+    
+    .feminine-form-container {
+        padding: 1rem;
+    }
+    
+    .feminine-card .card-body {
+        padding: 1rem;
+    }
+    
+    .feminine-chart-container {
+        height: 200px;
+        padding: 1rem;
+    }
+    
+    .btn-exportacion {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Efectos especiales femeninos */
+.feminine-sparkle {
+    position: relative;
+    overflow: hidden;
+}
+
+.feminine-sparkle::after {
+    content: '✨';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    animation: feminineSparkle 2s ease-in-out infinite;
+}
+
+@keyframes feminineSparkle {
+    0%, 100% { 
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Elementos adicionales */
+.feminine-heart-accent::before {
+    content: '💖';
+    margin-right: 0.5rem;
+}
+
+.feminine-flower-accent::before {
+    content: '🌸';
+    margin-right: 0.5rem;
+}
+
+/* Transiciones suaves */
+* {
+    transition: all 0.3s ease;
+}
+
+/* Scrollbar femenino */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 182, 193, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--primary-pink), var(--purple-light));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ff1493, #ba55d3);
+}
+
+/* Selección de texto */
+::selection {
+    background: rgba(255, 105, 180, 0.3);
+    color: var(--text-dark);
+}
+
+::-moz-selection {
+    background: rgba(255, 105, 180, 0.3);
+    color: var(--text-dark);
+}

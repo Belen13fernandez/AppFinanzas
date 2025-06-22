@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Mi Gestor Financiero Elegante</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="feminine-bg">
+    <!-- Contenedor de alertas -->
+    <div id="alertas-container"></div>
+    
+    <div class="container-fluid p-0">
+        <nav class="nav nav-pills feminine-nav">
+            <a class="nav-link active" href="#" data-tab="resumen">
+                <i class="bi bi-house-heart"></i> <span>Resumen</span>
+            </a>
+            <a class="nav-link" href="#" data-tab="registro">
+                <i class="bi bi-plus-circle-fill"></i> <span>Registrar</span>
+            </a>
+            <a class="nav-link" href="#" data-tab="reportes">
+                <i class="bi bi-graph-up-arrow"></i> <span>Reportes</span>
+            </a>
+            <a class="nav-link" href="#" data-tab="categorias">
+                <i class="bi bi-tags-fill"></i> <span>Categorías</span>
+            </a>
+        </nav>
+
+        <main class="p-4">
+            <!-- Sección Resumen -->
+            <section id="resumen" class="tab-content active">
+                <div class="feminine-header mb-4">
+                    <h3 class="feminine-title">
+                        <i class="bi bi-gem me-2"></i>
+                        Resumen Financiero
+                    </h3>
+                    <div id="balance-total" class="feminine-balance">$0</div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-6">
+                        <div class="feminine-card income-card">
+                            <div class="card-body text-center">
+                                <div class="feminine-icon-wrapper income-icon mb-2">
+                                    <i class="bi bi-arrow-up-circle-fill"></i>
+                                </div>
+                                <h6 class="card-title text-success-feminine">Ingresos</h6>
+                                <h4 id="total-ingresos" class="feminine-amount">$0</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="feminine-card expense-card">
+                            <div class="card-body text-center">
+                                <div class="feminine-icon-wrapper expense-icon mb-2">
+                                    <i class="bi bi-arrow-down-circle-fill"></i>
+                                </div>
+                                <h6 class="card-title text-danger-feminine">Egresos</h6>
+                                <h4 id="total-egresos" class="feminine-amount">$0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feminine-section mb-4">
+                    <h5 class="feminine-subtitle">
+                        <i class="bi bi-flower1 me-2"></i>
+                        Categorías
+                    </h5>
+                    <div id="categorias-container" class="mb-4"></div>
+                </div>
+
+                <div class="feminine-section">
+                    <h5 class="feminine-subtitle">
+                        <i class="bi bi-clock-history me-2"></i>
+                        Últimos movimientos
+                    </h5>
+                    <div class="feminine-list" id="ultimos-movimientos"></div>
+                </div>
+            </section>
+
+            <!-- Sección Registro -->
+            <section id="registro" class="tab-content">
+                <div class="feminine-header mb-4">
+                    <h3 class="feminine-title">
+                        <i class="bi bi-plus-circle-dotted me-2"></i>
+                        Registrar Movimiento
+                    </h3>
+                </div>
+                
+                <div class="feminine-form-container">
+                    <form id="form-movimiento">
+                        <div class="mb-4">
+                            <label class="feminine-label">Tipo de movimiento</label>
+                            <div class="btn-group w-100 feminine-btn-group" role="group">
+                                <input type="radio" class="btn-check" name="tipo" id="ingreso-radio" value="ingreso" checked>
+                                <label class="btn feminine-btn-income" for="ingreso-radio">
+                                    <i class="bi bi-heart me-2"></i>Ingreso
+                                </label>
+                                <input type="radio" class="btn-check" name="tipo" id="egreso-radio" value="egreso">
+                                <label class="btn feminine-btn-expense" for="egreso-radio">
+                                    <i class="bi bi-heart-break me-2"></i>Egreso
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="feminine-label">
+                                <i class="bi bi-tag me-2"></i>Categoría
+                            </label>
+                            <select class="form-select feminine-select" name="categoria" id="categoria-movimiento" required></select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="feminine-label">
+                                <i class="bi bi-chat-dots me-2"></i>Descripción (opcional)
+                            </label>
+                            <input type="text" class="form-control feminine-input" name="descripcion" id="descripcion-movimiento" placeholder="Añade una descripción...">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="feminine-label">
+                                <i class="bi bi-currency-dollar me-2"></i>Monto
+                            </label>
+                            <div class="input-group feminine-input-group">
+                                <span class="input-group-text feminine-input-addon">$</span>
+                                <input type="number" class="form-control feminine-input" name="monto" id="monto-movimiento" min="0" step="0.01" required placeholder="0.00">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="feminine-label">
+                                <i class="bi bi-calendar-heart me-2"></i>Fecha
+                            </label>
+                            <input type="date" class="form-control feminine-input" name="fecha" id="fecha-movimiento" required>
+                        </div>
+
+                        <button type="submit" class="btn feminine-btn-primary w-100">
+                            <i class="bi bi-heart-fill me-2"></i>Guardar Movimiento
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Sección Reportes -->
+            <section id="reportes" class="tab-content">
+                <div class="feminine-header mb-4">
+                    <h3 class="feminine-title">
+                        <i class="bi bi-graph-up-arrow me-2"></i>
+                        Reportes Elegantes
+                    </h3>
+                </div>
+
+                <!-- Búsqueda Avanzada -->
+                <div class="feminine-card mb-4">
+                    <div class="card-body">
+                        <h5 class="feminine-card-title">
+                            <i class="bi bi-search-heart me-2"></i>Búsqueda Avanzada
+                        </h5>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="feminine-label">Buscar por descripción</label>
+                                <input type="text" class="form-control feminine-input" id="buscar-descripcion" 
+                                       placeholder="Ej: supermercado, combustible...">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="feminine-label">Monto mínimo</label>
+                                <input type="number" class="form-control feminine-input" id="buscar-monto-min" 
+                                       placeholder="0" step="0.01">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="feminine-label">Monto máximo</label>
+                                <input type="number" class="form-control feminine-input" id="buscar-monto-max" 
+                                       placeholder="Sin límite" step="0.01">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="feminine-label">Desde</label>
+                                <input type="date" class="form-control feminine-input" id="buscar-fecha-desde">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="feminine-label">Hasta</label>
+                                <input type="date" class="form-control feminine-input" id="buscar-fecha-hasta">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-2">
+                            <div class="col-md-3">
+                                <label class="feminine-label">Tipo</label>
+                                <select class="form-select feminine-select" id="buscar-tipo">
+                                    <option value="todos">Todos</option>
+                                    <option value="ingreso">Solo Ingresos</option>
+                                    <option value="egreso">Solo Egresos</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="feminine-label">Categoría específica</label>
+                                <select class="form-select feminine-select" id="buscar-categoria">
+                                    <option value="todas">Todas las categorías</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-end">
+                                <button type="button" class="btn feminine-btn-primary me-2" id="ejecutar-busqueda">
+                                    <i class="bi bi-search me-2"></i>Buscar
+                                </button>
+                                <button type="button" class="btn feminine-btn-secondary" id="limpiar-busqueda">
+                                    <i class="bi bi-x-circle me-2"></i>Limpiar
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Resultados de búsqueda -->
+                        <div id="resultados-busqueda" class="mt-4 feminine-search-results" style="display: none;">
+                            <div class="feminine-divider"></div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="feminine-subtitle mb-0">Resultados de búsqueda</h6>
+                                <span id="contador-resultados" class="feminine-badge"></span>
+                            </div>
+                            <div id="lista-resultados" class="feminine-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feminine-card mb-4">
+                    <div class="card-body">
+                        <h5 class="feminine-card-title">
+                            <i class="bi bi-funnel me-2"></i>Filtros Rápidos
+                        </h5>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="feminine-label">Período</label>
+                                <select class="form-select feminine-select" id="filtro-periodo">
+                                    <option value="semana">Esta semana</option>
+                                    <option value="mes">Este mes</option>
+                                    <option value="anio">Este año</option>
+                                    <option value="todos" selected>Todos</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="feminine-label">Año</label>
+                                <select class="form-select feminine-select" id="filtro-anio">
+                                    <option value="todos" selected>Todos los años</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="feminine-label">Mes</label>
+                                <select class="form-select feminine-select" id="filtro-mes">
+                                    <option value="todos" selected>Todos los meses</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="feminine-label">Tipo</label>
+                                <select class="form-select feminine-select" id="filtro-tipo">
+                                    <option value="todos" selected>Todos los tipos</option>
+                                    <option value="ingreso">Solo ingresos</option>
+                                    <option value="egreso">Solo egresos</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="feminine-label">Categoría</label>
+                                <select class="form-select feminine-select" id="filtro-categoria">
+                                    <option value="todas" selected>Todas las categorías</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feminine-card mb-4">
+                    <div class="card-body">
+                        <h5 class="feminine-card-title">
+                            <i class="bi bi-pie-chart me-2"></i>Visualización
+                        </h5>
+                        <div class="row g-4">
+                            <div class="col-12 col-lg-4">
+                                <div class="feminine-chart-container">
+                                    <canvas id="graficoComparacion"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="feminine-chart-container">
+                                    <canvas id="graficoCategorias"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="feminine-chart-container">
+                                    <canvas id="graficoEvolucion"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen de reportes -->
+                <div class="feminine-card mb-4">
+                    <div class="card-body">
+                        <h5 class="feminine-card-title">
+                            <i class="bi bi-journal-text me-2"></i>Resumen Detallado
+                        </h5>
+                        <div id="resumen-reporte" class="row">
+                            <!-- Se llenará dinámicamente con los datos del reporte -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de movimientos filtrados -->
+                <div class="feminine-card mb-4">
+                    <div class="card-body">
+                        <h5 class="feminine-card-title">
+                            <i class="bi bi-list-ul me-2"></i>Movimientos
+                        </h5>
+                        <div class="feminine-list" id="lista-movimientos-reporte"></div>
+                    </div>
+                </div>
+
+                <!-- Exportación e importación -->
+                <div class="feminine-card">
+                    <div class="card-body">
+                        <h5 class="feminine-card-title">
+                            <i class="bi bi-download me-2"></i>Exportar e Importar
+                        </h5>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <button class="btn feminine-btn-success w-100" id="exportar-btn">
+                                    <i class="bi bi-file-earmark-excel me-2"></i>Exportar Excel
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn feminine-btn-info w-100" id="exportar-json-btn">
+                                    <i class="bi bi-file-earmark-code me-2"></i>Exportar JSON
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn feminine-btn-warning w-100" id="importar-btn">
+                                    <i class="bi bi-upload me-2"></i>Importar Datos
+                                </button>
+                                <input type="file" id="importar-input" accept=".json,.csv,.xlsx" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Categorías -->
+            <section id="categorias" class="tab-content">
+                <div class="feminine-header mb-4">
+                    <h3 class="feminine-title">
+                        <i class="bi bi-tags-fill me-2"></i>
+                        Gestión de Categorías
+                    </h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Formulario para agregar nueva categoría -->
+                        <div class="feminine-card mb-4">
+                            <div class="card-body">
+                                <h5 class="feminine-card-title">
+                                    <i class="bi bi-plus-circle me-2"></i>Agregar Nueva Categoría
+                                </h5>
+                                <form id="form-categoria">
+                                    <div class="mb-3">
+                                        <label class="feminine-label">Nombre de la categoría</label>
+                                        <input type="text" class="form-control feminine-input" name="nombre" id="nombre-categoria" required placeholder="Ej: Transporte, Comida...">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="feminine-label">Tipo</label>
+                                        <div class="btn-group w-100 feminine-btn-group" role="group">
+                                            <input type="radio" class="btn-check" name="tipo-categoria" id="ingreso-categoria" value="ingreso" checked>
+                                            <label class="btn feminine-btn-income" for="ingreso-categoria">
+                                                <i class="bi bi-heart me-2"></i>Ingreso
+                                            </label>
+                                            <input type="radio" class="btn-check" name="tipo-categoria" id="egreso-categoria" value="egreso">
+                                            <label class="btn feminine-btn-expense" for="egreso-categoria">
+                                                <i class="bi bi-heart-break me-2"></i>Egreso
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn feminine-btn-primary w-100">
+                                        <i class="bi bi-heart-fill me-2"></i>Agregar Categoría
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <!-- Lista de categorías existentes -->
+                        <div class="feminine-card mb-4">
+                            <div class="card-body">
+                                <h5 class="feminine-card-title">
+                                    <i class="bi bi-collection me-2"></i>Categorías Existentes
+                                </h5>
+                                <div class="mb-3">
+                                    <label class="feminine-label">Filtrar por tipo</label>
+                                    <select class="form-select feminine-select" id="filtro-tipo-categoria">
+                                        <option value="todas" selected>Todas las categorías</option>
+                                        <option value="ingreso">Solo ingresos</option>
+                                        <option value="egreso">Solo egresos</option>
+                                    </select>
+                                </div>
+                                <div id="lista-categorias" class="feminine-categories-list">
+                                    <!-- Se llenará dinámicamente con las categorías -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal de edición -->
+    <div class="modal fade feminine-modal" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header feminine-modal-header">
+                    <h5 class="modal-title" id="editarModalLabel">
+                        <i class="bi bi-pencil-heart me-2"></i>Editar Movimiento
+                    </h5>
+                    <button type="button" class="btn-close feminine-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-editar">
+                        <input type="hidden" id="editar-id">
+                        
+                        <div class="mb-3">
+                            <label class="feminine-label">Tipo de movimiento</label>
+                            <div class="btn-group w-100 feminine-btn-group" role="group">
+                                <input type="radio" class="btn-check" name="editar-tipo" id="editar-ingreso-radio" value="ingreso">
+                                <label class="btn feminine-btn-income" for="editar-ingreso-radio">
+                                    <i class="bi bi-heart me-2"></i>Ingreso
+                                </label>
+                                <input type="radio" class="btn-check" name="editar-tipo" id="editar-egreso-radio" value="egreso">
+                                <label class="btn feminine-btn-expense" for="editar-egreso-radio">
+                                    <i class="bi bi-heart-break me-2"></i>Egreso
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="feminine-label">
+                                <i class="bi bi-tag me-2"></i>Categoría
+                            </label>
+                            <select class="form-select feminine-select" name="editar-categoria" id="editar-categoria" required></select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="feminine-label">
+                                <i class="bi bi-chat-dots me-2"></i>Descripción
+                            </label>
+                            <input type="text" class="form-control feminine-input" name="editar-descripcion" id="editar-descripcion">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="feminine-label">
+                                <i class="bi bi-currency-dollar me-2"></i>Monto
+                            </label>
+                            <div class="input-group feminine-input-group">
+                                <span class="input-group-text feminine-input-addon">$</span>
+                                <input type="number" class="form-control feminine-input" name="editar-monto" id="editar-monto" min="0" step="0.01" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="feminine-label">
+                                <i class="bi bi-calendar-heart me-2"></i>Fecha
+                            </label>
+                            <input type="date" class="form-control feminine-input" name="editar-fecha" id="editar-fecha" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer feminine-modal-footer">
+                    <button type="button" class="btn feminine-btn-danger" id="eliminar-btn">
+                        <i class="bi bi-trash me-2"></i>Eliminar
+                    </button>
+                    <button type="button" class="btn feminine-btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-2"></i>Cancelar
+                    </button>
+                    <button type="button" class="btn feminine-btn-primary" id="guardar-cambios-btn">
+                        <i class="bi bi-heart-fill me-2"></i>Guardar Cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Inicializar la aplicación cuando se carga la página
+        document.addEventListener('DOMContentLoaded', inicializarApp);
+    </script>
+</body>
+</html>
